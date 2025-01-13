@@ -15,15 +15,15 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(name = "author", nullable = false)
     private String author;
 
-    @Column
+    @Column(name = "description")
     private String description;
 
-    @Column
+    @Column(name = "url")
     private String url;
 }

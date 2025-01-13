@@ -41,9 +41,9 @@ public class BookController {
 
     @GetMapping("/get")
     public ResponseEntity<List<BookDto>> getAllBookFromWolneLektury() {
-        List<Book> books = wolneLekturyService.allBookFromWolneLektury();
+        List<Book> books = wolneLekturyService.allBooksFromWolneLektury();
         books.stream()
-                .map(b -> b.getTitle() + " " + b.getUrl())
+                .map(b -> b.getTitle() + ", " + b.getAuthor() + ", " + b.getUrl())
                 .forEach(System.out::println);
         return ResponseEntity.ok(new ArrayList<>());
     }

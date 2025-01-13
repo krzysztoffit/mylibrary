@@ -24,7 +24,7 @@ public class WolneLekturyService {
 
 
 
-    public List<Book> allBookFromWolneLektury() {
+    public List<Book> allBooksFromWolneLektury() {
         String url = "https://wolnelektury.pl/api/books";
 
         try {
@@ -35,6 +35,7 @@ public class WolneLekturyService {
             for (JsonNode resultNode : root) {
                 BookDto bookDto = new BookDto();
                 bookDto.setTitle(resultNode.get("title").asText());
+                bookDto.setAuthor(resultNode.get("author").asText());
                 bookDto.setUrl(resultNode.get("url").asText());
                 books.add(bookMapper.toEntity(bookDto));
             }
