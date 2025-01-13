@@ -36,6 +36,7 @@ public class WolneLekturyService {
                 BookDto bookDto = new BookDto();
                 bookDto.setTitle(resultNode.get("title").asText());
                 bookDto.setAuthor(resultNode.get("author").asText());
+                bookDto.setGenre(resultNode.get("genre").asText());
                 bookDto.setUrl(resultNode.get("url").asText());
                 books.add(bookMapper.toEntity(bookDto));
             }
