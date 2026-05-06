@@ -43,7 +43,7 @@ public class BookController {
     public ResponseEntity<List<BookDto>> getAllBookFromWolneLektury() {
         List<Book> books = wolneLekturyService.allBooksFromWolneLektury();
         books.stream()
-                .filter(b -> b.getGenre().toLowerCase().contains("bajka"))
+                .filter(b -> b.getAuthor().toLowerCase().contains("asnyk"))
                 .map(
                         b -> b.getGenre() + ", " + b.getTitle() + ", " + b.getAuthor() + ", " + b.getUrl()
                 )
