@@ -32,8 +32,7 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BookDto>
-    getBookById(@PathVariable Long id) {
+    public ResponseEntity<BookDto> getBookById(@PathVariable Long id) {
         BookDto bookDto = bookService.getBookById(id);
 
         return bookDto != null ? ResponseEntity.ok(bookDto) : ResponseEntity.notFound().build();
@@ -43,10 +42,11 @@ public class BookController {
     public ResponseEntity<List<BookDto>> getAllBookFromWolneLektury() {
         List<Book> books = wolneLekturyService.allBooksFromWolneLektury();
         books.stream()
-                .filter(b -> b.getAuthor().toLowerCase().contains("asnyk"))
                 .map(
-                        b -> b.getGenre() + ", " + b.getTitle() + ", " + b.getAuthor() + ", " + b.getUrl()
-                )
+                        b -> b.getGenre() + ", "
+                                + b.getTitle() + ", "
+                                + b.getAuthor() + ", "
+                                + b.getUrl())
                 .sorted()
                 .forEach(System.out::println);
         return ResponseEntity.ok(new ArrayList<>());
@@ -54,8 +54,7 @@ public class BookController {
 
     @PostMapping
     public ResponseEntity<BookDto> createBook(@RequestBody BookDto bookDto) {
-        BookDto createdBook
- = bookService.saveBook(bookDto);
+        BookDto createdBook = bookService.saveBook(bookDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdBook);
 
     }
